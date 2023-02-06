@@ -47,7 +47,7 @@ export class WidgetRepository extends Repository<WidgetEntity> {
    * Query revisions corresponding to multiple widgets
    */
   public async getRevisionByWdtIds(widgetIds: string[]): Promise<IResourceRevision[]> {
-    return this.createQueryBuilder()
+    return await this.createQueryBuilder()
       .select('widget_id', 'resourceId')
       .addSelect('revision')
       .where('widget_id IN (:...widgetIds)', { widgetIds })
